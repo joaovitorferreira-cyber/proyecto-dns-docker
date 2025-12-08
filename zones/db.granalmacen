@@ -1,0 +1,15 @@
+$TTL    604800
+@       IN      SOA     ns.granalmacen.int. root.granalmacen.int. (
+                              3         ; Serial (incrementado)
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.granalmacen.int.
+
+; --- AQUI ESTAN LOS CAMBIOS ---
+@       IN      A       172.16.8.10   ; IP de tu servidor Docker
+ns      IN      A       172.16.8.10   ; El servidor de nombres
+www     IN      A       172.16.8.10   ; Ejemplo web
+router  IN      A       172.16.8.1    ; Supuesta IP del Gateway (opcional)

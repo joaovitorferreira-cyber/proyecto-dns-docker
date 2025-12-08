@@ -1,0 +1,4 @@
+zone "granalmacen.int" {
+    type master;
+    file "/var/lib/bind/db.granalmacen";
+};
