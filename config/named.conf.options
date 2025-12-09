@@ -1,7 +1,20 @@
+acl "mi-xarxa" {
+    172.16.8.0/26;
+    127.0.0.0/8;
+};
+
 options {
     directory "/var/cache/bind";
+
     recursion yes;
-    allow-query { any; };
+    allow-query { "mi-xarxa"; };
+
+    // forwarders (Google y Cloudflare)
+    forwarders {
+        8.8.8.8;
+        1.1.1.1;
+    };
+
     dnssec-validation auto;
     listen-on-v6 { any; };
 };
