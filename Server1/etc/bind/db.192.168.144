@@ -1,0 +1,16 @@
+$ORIGIN .
+$TTL 60 ; 1 minute
+144.168.192.in-addr.arpa IN SOA ns1.granalmacen.com. admin.granalmacen.com. (
+                                2008052002 ; serial
+                                120        ; refresh (2 minutes)
+                                60         ; retry (1 minute)
+                                86400      ; expire (1 day)
+                                60         ; minimum (1 minute)
+                                )
+                        NS      ns1.granalmacen.com.
+$ORIGIN 144.168.192.in-addr.arpa.
+134                     PTR     ns1.granalmacen.com.
+$TTL 600        ; 10 minutes
+150                     PTR     clientedns.granalmacen.com.
+                        DHCID   ( AAIBvPLtiDQXp3uIva1e/mDqTkN7VJXhVAaY11IekWQS
+                                hfM= ) ; 2 1 32

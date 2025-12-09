@@ -1,0 +1,13 @@
+services:
+  dns-server-1:
+    build:
+      context: ..
+      dockerfile: dns.Dockerfile
+    container_name: dns-dck-dns1
+    ports:
+     # systemctl stop systemd-resolved
+     # systemctl disable systemd-resolved
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./etc/bind:/etc/bind:rw

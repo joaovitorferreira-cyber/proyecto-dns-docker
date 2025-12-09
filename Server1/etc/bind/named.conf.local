@@ -1,0 +1,27 @@
+zone "granalmacen.com" {
+    type master;
+    file "/etc/bind/db.granalmacen.com";
+    allow-transfer { 192.168.144.135; };
+};
+zone "sub.granalmacen.com" {
+    type master;
+    file "/etc/bind/db.sub.granalmacen.com";
+    allow-transfer { 192.168.144.135; };
+};
+// Zona Esclava de xarxadmin
+zone "granalmacen.org" {
+    type slave;
+    masters { 192.168.144.135; };    // La IP del segon domini
+    file "/var/lib/bind/db.granalmacen.org"; //
+};
+// Zona Inversa
+zone "144.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192.168.144";
+};
+// Subzona de granalmacen.org
+zone "xarxaadmin.granalmacen.org" {
+    type slave;
+    masters { 192.168.144.135; };
+    file "/var/lib/bind/db.xarxaadmin.granalmacen.org";
+};
