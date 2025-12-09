@@ -6,15 +6,17 @@ acl "mi-xarxa" {
 options {
     directory "/var/cache/bind";
 
+    // IMPORTANTE: Permitir consultas de cualquiera
+    allow-query { any; };
+
+    // Permitir recursión (para resolver google.com) desde cualquiera
     recursion yes;
-    allow-query { "mi-xarxa"; };
+    allow-recursion { any; };
 
-    // forwarders (Google y Cloudflare)
-    forwarders {
-        8.8.8.8;
-        1.1.1.1;
-    };
-
-    dnssec-validation auto;
+    // Escuchar en todas las interfaces
+    listen-on { any; };
     listen-on-v6 { any; };
+
+    // Para que no se queje de DNSSEC si no lo usas
+    dnssec-validation no;
 };

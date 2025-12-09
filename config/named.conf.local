@@ -1,19 +1,11 @@
-// Clave para DDNS
-key "ddns-key" {
-    algorithm hmac-sha256;
-    secret "+2ndc5109elrqCNLuBE7h9rDsB3lcB/yMPgqCBPahgU=";
-};
-
 // Zona Principal
 zone "granalmacen.int" {
     type master;
     file "/var/lib/bind/db.granalmacen";
-    allow-update { key "ddns-key"; };
 };
 
 // Subzona granalmacen
 zone "sub.granalmacen.int" {
     type master;
     file "/var/lib/bind/db.sub.granalmacen"; 
-    allow-update { key "ddns-key"; };
 };
