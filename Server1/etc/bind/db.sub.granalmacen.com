@@ -1,25 +1,24 @@
-;
-; Archivo de zona sub.granalmacen.com
-;
+$ORIGIN .
 $TTL    1m
-@       IN      SOA     ns1.sub.granalmacen.com. admin.granalmacen.ib. (
-                        2008052001 ; Serial
-                        2m         ; Refresh (2 minutos)
-                        1m         ; Retry (1 minuto)
-                        1d         ; Expire (1 día)
-                        1m )       ; Negative Cache TTL
+sub.granalmacen.com.    IN      SOA     ns1.sub.granalmacen.com. admin.granalmacen.com. (
+                                        2025120901 ; Serial (Actualizado)
+                                        2m         ; Refresh
+                                        1m         ; Retry
+                                        1d         ; Expire
+                                        1m )       ; Negative Cache TTL
 
-; Servidores DNS de la Subzona (NS)
-@       IN      NS      ns1.sub.granalmacen.com.
-@       IN      NS      ns2.sub.granalmacen.com.
+; --- Servidores DNS de la Subzona (NS) ---
+                        IN      NS      ns1.sub.granalmacen.com.
+                        IN      NS      ns2.sub.granalmacen.org.
 
-;  Registros de los Servidores DNS
-ns1     IN      A       192.168.144.134  ; Servidor Primario
-ns2     IN      A       192.168.144.135  ; Servidor Secundario
+$ORIGIN sub.granalmacen.com.
+; --- Registros de los Servidores DNS ---
+ns1     IN      A       172.16.8.8      ; Servidor 1 (Local)
 
-; Estaciones de Trabajo
-pc1    IN      A       192.168.144.150
-pc2    IN      A       192.168.144.151
-pc3    IN      A       192.168.144.152
-pc4    IN      A       192.168.144.153
-pc5    IN      A       192.168.144.154
+; --- Estaciones de Trabajo (Dentro de la red /26) ---
+; El rango válido es .1 a .62. Las antiguas (.150) quedaban fuera.
+pc1     IN      A       172.16.8.50
+pc2     IN      A       172.16.8.51
+pc3     IN      A       172.16.8.52
+pc4     IN      A       172.16.8.53
+pc5     IN      A       172.16.8.54

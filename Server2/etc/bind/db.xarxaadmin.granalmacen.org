@@ -1,20 +1,22 @@
+$ORIGIN .
 $TTL 604800
-@   IN  SOA ns1.xarxadmin.granalmacen.org. admin.granalmacen.org. (
-        2025120201
-        3600
-        1800
-        604800
-        86400 )
+xarxaadmin.granalmacen.org. IN SOA ns1.xarxadmin.granalmacen.org. admin.granalmacen.org. (
+        2025120901 ; Serial
+        3600       ; Refresh
+        1800       ; Retry
+        604800     ; Expire
+        86400 )    ; Negative Cache TTL
 
-; Servidores DNS de la subzona
-@   IN  NS ns1.xarxadmin.granalmacen.org.
-@   IN  NS ns2.xarxadmin.granalmacen.org.
+; --- Servidores DNS de la subzona ---
+                            IN  NS ns1.xarxadmin.granalmacen.org.
+                            IN  NS ns2.xarxadmin.granalmacen.org.
 
-; Registros A de la subzona
-ns1   IN A 192.168.144.150
-ns2   IN A 192.168.144.151
-pc01  IN A 192.168.144.152
-pc02  IN A 192.168.144.153
-pc03  IN A 192.168.144.154
-pc04  IN A 192.168.144.155
-pc05  IN A 192.168.144.156
+$ORIGIN xarxaadmin.granalmacen.org.
+; --- Registros A  ---
+ns1                         IN  A 172.16.8.50
+ns2                         IN  A 172.16.8.51
+pc01                        IN  A 172.16.8.52
+pc02                        IN  A 172.16.8.53
+pc03                        IN  A 172.16.8.54
+pc04                        IN  A 172.16.8.55
+pc05                        IN  A 172.16.8.56

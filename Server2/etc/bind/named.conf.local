@@ -1,30 +1,33 @@
-// Incluir la clave
+// Incluir la clave para DDNS (DHCP)
 include "/etc/bind/update-key.key";
 
-// Zona directa
+// --- Zona Directa (DDNS activo) ---
 zone "granalmacen.org" {
     type master;
     file "/etc/bind/db.granalmacen.org"; 
-    allow-update { key "update-key"; };       //  PERMITE ACTUALIZAR
-    allow-transfer { 192.168.144.134; };      // esclavo
+    allow-update { key "update-key"; };       // DDNS: Permite actualización
+    allow-transfer { 172.16.8.8; };           // Esclavo (Servidor 1)
 };
 
-// Zona inversa
-zone "144.168.192.in-addr.arpa" {
+// --- Zona Inversa (DDNS activo) ---
+zone "8.16.172.in-addr.arpa" {
     type master;
-    file "/etc/bind/db.inversa";          
-    allow-update { key "update-key"; };       // PERMITE ACTUALIZAR
+    // Asegúrate de que este archivo "db.inversa" tenga los datos de la red 172.16.8
+    file "/etc/bind/db.inversa";           
+    allow-update { key "update-key"; };       // DDNS: Permite actualización
+    allow-transfer { 172.16.8.8; };           // Esclavo (Servidor 1)
 };
 
-// Zona esclava (del otro dominio, no se toca para DDNS)
+// --- Zona Esclava (El master es Servidor 1) ---
 zone "granalmacen.com" {
     type slave;
-    masters { 192.168.144.134; };
+    masters { 172.16.8.8; };                  // Master (Servidor 1)
     file "/var/lib/bind/db.granalmacen.com";
 };
 
-// Subzona (No se toca si no usa DHCP propio)
-zone "xarxadmin.granalmacen.org" {
+// --- Subzona (Estática) ---
+zone "xarxaadmin.granalmacen.org" {
     type master;
     file "/etc/bind/db.xarxaadmin.granalmacen.org";
+    allow-transfer { 172.16.8.8; };           // Esclavo (Servidor 1)
 };

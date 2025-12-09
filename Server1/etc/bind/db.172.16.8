@@ -1,0 +1,15 @@
+$ORIGIN .
+$TTL 60 ; 1 minute
+; Nota que la zona inversa sigue el orden 8.16.172 (los octetos de la IP al revés)
+8.16.172.in-addr.arpa IN SOA ns1.granalmacen.com. admin.granalmacen.com. (
+                                2025120901 ; serial (Actualizado a fecha de hoy)
+                                120        ; refresh (2 minutes)
+                                60         ; retry (1 minute)
+                                86400      ; expire (1 day)
+                                60         ; minimum (1 minute)
+                                )
+                        NS      ns1.granalmacen.com.
+
+$ORIGIN 8.16.172.in-addr.arpa.
+; Aquí definimos el último octeto de la IP (172.16.8.8)
+8                      PTR     granalmacen.com.
