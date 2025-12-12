@@ -1,6 +1,3 @@
-// Incluir la clave para DDNS (DHCP)
-include "/etc/bind/update-key.key";
-
 // --- Zona Directa (DDNS activo) ---
 zone "granalmacen.org" {
     type master;
@@ -11,11 +8,9 @@ zone "granalmacen.org" {
 
 // --- Zona Inversa (DDNS activo) ---
 zone "8.16.172.in-addr.arpa" {
-    type master;
-    // Asegúrate de que este archivo "db.inversa" tenga los datos de la red 172.16.8
-    file "/etc/bind/db.inversa";           
-    allow-update { key "update-key"; };       // DDNS: Permite actualización
-    allow-transfer { 172.16.8.8; };           // Esclavo (Servidor 1)
+    type slave;
+    masters { 172.16.8.8; };   
+    file "/var/lib/bind/db.inversa";           
 };
 
 // --- Zona Esclava (El master es Servidor 1) ---

@@ -9,7 +9,7 @@ options {
     dnssec-validation auto;
     auth-nxdomain no;
 
-    listen-on { 172.16.8.9; 127.0.0.1; };
+    listen-on { any; };
 
     listen-on-v6 { none; };
 

@@ -1,0 +1,26 @@
+$TTL 604800
+@   IN  SOA ns1.xarxadmin.granalmacen.org. admin.granalmacen.org. (
+        2025120901 ; Serial (Actualizado)
+        3600       ; Refresh
+        1800       ; Retry
+        604800     ; Expire
+        86400 )    ; Negative Cache TTL
+
+; --- Servidores DNS de la zona inversa ---
+    IN NS ns1.xarxadmin.granalmacen.org.
+    IN NS ns2.xarxadmin.granalmacen.org.
+
+$ORIGIN 8.16.172.in-addr.arpa.
+
+; --- Servidores de Infraestructura (Recomendado) ---
+8   IN PTR ns1.granalmacen.com.   ; Servidor 1
+9   IN PTR ns2.granalmacen.org.   ; Servidor 2
+
+; --- Red XarxaAdmin ---
+50  IN PTR ns1.xarxadmin.granalmacen.org.
+51  IN PTR ns2.xarxadmin.granalmacen.org.
+52  IN PTR pc01.xarxadmin.granalmacen.org.
+53  IN PTR pc02.xarxadmin.granalmacen.org.
+54  IN PTR pc03.xarxadmin.granalmacen.org.
+55  IN PTR pc04.xarxadmin.granalmacen.org.
+56  IN PTR pc05.xarxadmin.granalmacen.org.
